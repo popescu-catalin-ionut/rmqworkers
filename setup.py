@@ -29,11 +29,12 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/popescu-catalin-ionut/rmqworkers",
     packages=setuptools.find_packages(),
+    package_data={'examples': ['*.py', 'examples/*.py']},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Development Status :: 1 - Production/Stable",
+        "Development Status :: 5 - Production/Stable",
         "Topic :: System :: Networking",
         "Natural Language :: English",
     ],
