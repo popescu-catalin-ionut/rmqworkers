@@ -20,8 +20,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="rmcworkers", # Replace with your own username
-    version="0.0.1",
+    name="rmqworkers", # Replace with your own username
+    version="0.0.2",
     author="Popescu Catalin-Ionut",
     author_email="popescu.catalin.ionut@gmail.com",
     description="Rabbit MQ wrapper implement with amqpstorm and with threading or multiprocessing",

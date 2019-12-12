@@ -1,6 +1,8 @@
 import sys
 
-sys.path.append('../')
+import os
+
+sys.path.append('..'+os.sep+'..'+os.sep)
 from amqpstorm import Message
 
 from rmqworkers.rmqWorker import Workers
@@ -12,6 +14,9 @@ LOG = logging.getLogger('rmqworkers')
 
 
 class InQueue(BaseQueue):
+    """
+    In queue that needs to be used in your code
+    """
     _instance = None  # must be here
     _type = 'in'  # a single in queue is permitted per Workers object
     queue_name = getenv('IN_QUE', 'in')
@@ -20,9 +25,9 @@ class InQueue(BaseQueue):
     @staticmethod
     def work(message):
         """
-        Extract work
-        :param message:
-        :return:k
+        Every class that inherits BaseQueue has a work method that will be automatically called
+        :param message: message object that needs to be consumed
+        :return: None
         """
         try:
             msg = eval(message.body)
@@ -39,9 +44,6 @@ class InQueue(BaseQueue):
 
 
 class OutQueue(BaseQueue):
-    """
-    In queue that needs to be used in your code
-    """
     _instance = None
     _type = 'out'
     routing = 'normal'
@@ -51,9 +53,9 @@ class OutQueue(BaseQueue):
     @staticmethod
     def work(message):
         """
-        Every class that inherits BaseQueue has a work method that will be automatically called
-        :param message: message object that needs to be consumed
-        :return: None
+        Extract work
+        :param message:
+        :return:k
         """
         properties = {
             'priority': OutQueue.priority,
@@ -64,12 +66,12 @@ class OutQueue(BaseQueue):
         message['add_something'] = 'something'
         message_out = Message.create(channel=OutQueue.channel,
                                      body=str(message),
-                                     properties={})
+                                     properties=properties)
         message_out.publish(OutQueue.queue_name)
         LOG.info("Message was added in out queue: {}".format(message))
         return True
 
 
 # publish in queue in { "job_info": "11111"}
-Workers(queues=(InQueue, OutQueue), running_type='process', standalone=False)
+Workers(queues=(InQueue, OutQueue), running_type='thread', standalone=False)
 # read from out queue that you modified

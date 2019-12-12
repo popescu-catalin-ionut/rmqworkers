@@ -1,6 +1,7 @@
 import sys
+import os
 
-sys.path.append('../')
+sys.path.append('..'+os.sep+'..'+os.sep)
 
 from rmqworkers.rmqWorker import Workers
 from rmqworkers.queues import BaseQueue

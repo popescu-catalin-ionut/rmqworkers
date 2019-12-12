@@ -23,7 +23,7 @@ Default has credentials:
     user:  quest
     passw: quest
 
-cd examples
+cd rmqworkers/examples
 
 source venv/bin/activate or venv/Scripts/activate.sh
 
