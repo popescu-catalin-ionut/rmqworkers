@@ -21,7 +21,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="rmqworkers", # Replace with your own username
-    version="0.0.2",
+    version="0.0.3",
     author="Popescu Catalin-Ionut",
     author_email="popescu.catalin.ionut@gmail.com",
     description="Rabbit MQ wrapper implement with amqpstorm and with threading or multiprocessing",

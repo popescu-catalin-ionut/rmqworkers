@@ -1,12 +1,12 @@
 
-rmcworkers -- Manage dynamic workers rabbitmq for Python applications
+rmqworkers -- Manage dynamic workers rabbitmq for Python applications
 =====
 
 ![status](https://img.shields.io/badge/rmqworkers-stable-success)
 
 
 
-Project rmcworkers offer high availability through simple, yet powerful library:
+Project rmqworkers offer high availability through simple, yet powerful library:
     This library doesn't work as a standalone.
     
 This project require a rabbitmq server.
